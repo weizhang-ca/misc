@@ -1,17 +1,23 @@
+public enum Rank{
+	ONE(1), TWO(2), THREE(3), FOUR(4), FIVE(5);
+	};
+public enum Suit{
+	HEART, SPADE, CLUB, DIAMOND;
+}
 class Card{
-	int suit;
-	int rank;
-	public Card(int rank, int suit){
+	Suit suit;
+	Rank rank;
+	public Card(Rank rank, Suit suit){
 		this.rank = rank;
 		this.suit = suit;
 	}
 	boolean compareTo(Card card){
-		if(this.rank < card.rank){
+		if(this.rank.compareTo(card.rank)<0){
 			return false;
 		}
 		else if(this.rank == card.rank)
 		{
-			if(this.suit < card.suit){
+			if(this.suit.compareTo(card.suit)<0){
 				return false;
 			}
 		}
@@ -32,12 +38,12 @@ class Deck{
 	public void fillDeck(){
 		cards = new Card[TOTAL_SIZE];
 		int k = 0;
-		for(int i=0; i<RANK_SIZE; i++){
-			for(int j=0; j<SUIT_SIZE; j++){
-				Card card = new Card(i, j);
-				cards[k] = card;
-				k++;
+		for(Rank rank:Rank.values()){
+			for(Suit suit:Suit.values()){
+				Card card = new Card(rank, suit);
+				cards[k++] = card;
 			}
+		}
 		}
 	}
 	
