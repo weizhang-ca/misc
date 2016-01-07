@@ -1,5 +1,6 @@
 public class MinCoins {
 	int[] coin_type = {1, 5, 10, 25, 50};
+	//Non-recursive
 	int find_min_coins(int n){
 		int[] b= new int[n+1];
 		for(int i=1; i<=n; i++){
@@ -13,7 +14,7 @@ public class MinCoins {
 		return b[n];
 	}
 
-	//Recursive
+	//Recursive - Performance is bad as usual
 	int find_min_coins_recursive(int n){
 		int a = 0;
 		if(n<coin_type[0]){
